@@ -11,61 +11,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author jonat_ns
  */
 public class MainGUI extends javax.swing.JFrame {
-    DefaultTableModel model;
-
+    int patientCount = 0;
     /**
      * Creates new form GUI
      */
     public MainGUI() {
-        searchTable("");
         initComponents();
         inHabilitar();
     }
-    
-    public void searchTable(String value){
-        
-        String[] title = {"Patient#", "Name", "Last Name", "Gender", "Address", "Email", "Telephone"};
-        String[] registry = new String[7];
-        String sSQL = "";
-        
-        model = new DefaultTableModel(null, title);
-        
-        Connect mysql = new Connect();
-        Connection cn = mysql.connect();
-        
-        sSQL = "SELECT patient_number, firstname, lastname, gender, address, email, telephone FROM cliente" 
-                + "WHERE CONCAT_WS(firstname, ' ',lastname) LIKE '%"+value+"%'";
-       
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sSQL);
-            
-            while(rs.next()){
-                registry[0] = rs.getString("patient_number");
-                registry[1] = rs.getString("firstname");
-                registry[2] = rs.getString("lastname");
-                registry[3] = rs.getString("gender");
-                registry[4] = rs.getString("address");
-                registry[5] = rs.getString("email");
-                registry[6] = rs.getString("telephone");
-                model.addRow(registry);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
-
-
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -97,9 +58,6 @@ public class MainGUI extends javax.swing.JFrame {
         txtSearchName = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         lblUser = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tnlSearch = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,15 +146,7 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(tbPatientInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                            .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPatientFirstName)
-                                .addComponent(txtPatientNo)))
+                    .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(tbPatientInfoLayout.createSequentialGroup()
                             .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -204,22 +154,29 @@ public class MainGUI extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(6, 6, 6)
+                            .addGap(215, 215, 215))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tbPatientInfoLayout.createSequentialGroup()
+                            .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPatientTelephone)
-                                .addComponent(txtPatientEmail)
+                                .addComponent(txtPatientNo)
+                                .addComponent(txtPatientFirstName)
+                                .addComponent(txtPatientLastName)
                                 .addComponent(txtPatientAddress)
+                                .addComponent(txtPatientEmail)
                                 .addGroup(tbPatientInfoLayout.createSequentialGroup()
                                     .addComponent(cmbPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 83, Short.MAX_VALUE))
-                                .addComponent(txtPatientLastName))))
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(txtPatientTelephone))))
                     .addGroup(tbPatientInfoLayout.createSequentialGroup()
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGap(319, 319, 319))
         );
         tbPatientInfoLayout.setVerticalGroup(
             tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +215,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnNew)
                         .addComponent(btnClear)))
-                .addGap(279, 279, 279))
+                .addGap(101, 101, 101))
         );
 
         tbPanel.addTab("Patient Information", tbPatientInfo);
@@ -267,11 +224,11 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGap(0, 641, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 326, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
 
         tbPanel.addTab("Receta*", jPanel2);
@@ -287,34 +244,13 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel9.setText("Patient name:");
 
         btnSearch.setText("Search...");
-
-        tnlSearch.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tnlSearch);
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lblUser.setText("user");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -322,28 +258,20 @@ public class MainGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(tbPanel, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtSearchNo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSearch))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(lblUser)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSearchNo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch))
+                    .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,11 +284,9 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(txtSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(lblUser)
+                .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -371,17 +297,183 @@ public class MainGUI extends javax.swing.JFrame {
        txtSearchNo.transferFocus();
     }//GEN-LAST:event_txtSearchNoActionPerformed
 
-    private void txtPatientFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientFirstNameActionPerformed
-        txtPatientFirstName.transferFocus();       
-    }//GEN-LAST:event_txtPatientFirstNameActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        
+        Connect mysql = new Connect();
+        Connection cn = mysql.connect();
+        
+        inHabilitar();
+  
+        if(txtSearchNo.getText().equals("") && !txtSearchName.getText().equals("")){
+            String searchName = txtSearchName.getText();
+        
+            String sSQL = "SELECT * FROM cliente WHERE firstname ='" +searchName+"'";
+        
+            try {
+                Statement st = (Statement) cn.createStatement();
+                ResultSet rs = st.executeQuery(sSQL);
+
+                while(rs.next()){    
+                    txtPatientNo.setText(rs.getString("patient_number"));
+                    txtPatientFirstName.setText(rs.getString("firstname"));
+                    txtPatientLastName.setText(rs.getString("lastname"));
+                    cmbPatientGender.setSelectedItem(rs.getString("gender"));
+                    txtPatientAddress.setText(rs.getString("address"));
+                    txtPatientEmail.setText(rs.getString("email"));
+                    txtPatientTelephone.setText(rs.getString("telephone"));
+                }
+                if(txtPatientFirstName.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Patient name not found");
+                    inHabilitar();
+                    txtSearchNo.setText("");
+                    txtSearchName.setText("");
+                    }
+                else{
+                    habilitarSearch();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        else if(txtSearchName.getText().equals("") && !txtSearchNo.getText().equals("")){
+            String searchNumber = txtSearchNo.getText();
+        
+            String sSQL = "SELECT * FROM cliente WHERE patient_number ='" +searchNumber+"'";
+        
+            try {
+                Statement st = (Statement) cn.createStatement();
+                ResultSet rs = st.executeQuery(sSQL);
+           
+            while(rs.next()){    
+                    txtPatientNo.setText(rs.getString("patient_number"));
+                    txtPatientFirstName.setText(rs.getString("firstname"));
+                    txtPatientLastName.setText(rs.getString("lastname"));
+                    cmbPatientGender.setSelectedItem(rs.getString("gender"));
+                    txtPatientAddress.setText(rs.getString("address"));
+                    txtPatientEmail.setText(rs.getString("email"));
+                    txtPatientTelephone.setText(rs.getString("telephone"));
+                }
+            if(txtPatientFirstName.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Patient number not found");
+                    inHabilitar();
+                    txtSearchNo.setText("");
+                    txtSearchName.setText("");
+                    }
+                else{
+                    habilitarSearch();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        else if(txtSearchName.getText().equals("") && txtSearchNo.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter at least one patient number or name");
+
+        }
+        else{
+          JOptionPane.showMessageDialog(null, "Please enter only one patient number or name"); 
+          txtSearchName.setText("");
+          txtSearchNo.setText("");
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+       inHabilitar();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        habilitarNew();
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void cmbPatientGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientGenderActionPerformed
+        cmbPatientGender.transferFocus();
+    }//GEN-LAST:event_cmbPatientGenderActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+
+        Connect mysql = new Connect();
+        Connection cn = mysql.connect();
+        String pNum, fName, lName, gen, address, email, tel;
+        String aSQL = "";
+        String message = "";
+       
+        pNum = txtPatientNo.getText();
+        fName = txtPatientFirstName.getText();
+        lName = txtPatientLastName.getText();
+        gen = cmbPatientGender.getSelectedItem().toString();
+        address = txtPatientAddress.getText();
+        email = txtPatientEmail.getText();
+        tel = txtPatientTelephone.getText();
+
+        aSQL = "INSERT INTO cliente(patient_number, firstname, lastName, gender, address, email, telephone)" +
+        "VALUES(?,?,?,?,?,?,?)";
+
+        message = "Patient Information Saved";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(aSQL);
+            pst.setString(1, pNum);
+            pst.setString(2, fName);
+            pst.setString(3, lName);
+            pst.setString(4, gen);
+            pst.setString(5, address);
+            pst.setString(6, email);
+            pst.setString(7, tel);
+
+            int n = pst.executeUpdate();
+
+            if(n > 0){
+                JOptionPane.showMessageDialog(null, message);
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+          inHabilitar();
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtPatientTelephoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientTelephoneActionPerformed
         txtPatientEmail.transferFocus();
         btnSave.setFocusable(true);
     }//GEN-LAST:event_txtPatientTelephoneActionPerformed
+
+    private void txtPatientEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientEmailActionPerformed
+        txtPatientEmail.transferFocus();
+    }//GEN-LAST:event_txtPatientEmailActionPerformed
+
+    private void txtPatientAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientAddressActionPerformed
+        txtPatientAddress.transferFocus();
+    }//GEN-LAST:event_txtPatientAddressActionPerformed
+
+    private void txtPatientLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientLastNameActionPerformed
+        txtPatientLastName.transferFocus();
+    }//GEN-LAST:event_txtPatientLastNameActionPerformed
+
+    private void txtPatientFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientFirstNameActionPerformed
+        txtPatientFirstName.transferFocus();
+    }//GEN-LAST:event_txtPatientFirstNameActionPerformed
+
+    private void txtPatientNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNoActionPerformed
+        txtPatientNo.transferFocus();
+    }//GEN-LAST:event_txtPatientNoActionPerformed
    
+     
+    private void habilitarSearch(){
+        txtPatientAddress.setEnabled(true);
+        txtPatientEmail.setEnabled(true);
+        txtPatientFirstName.setEnabled(true);
+        txtPatientLastName.setEnabled(true);
+        txtPatientTelephone.setEnabled(true);
+        txtPatientNo.setEnabled(true);
+        cmbPatientGender.setEnabled(true);
+        btnSave.setEnabled(true);
+        tbPatientInfo.setEnabled(true);
     
-    private void habilitar(){
+        tbPanel.transferFocus();
+    }
+    
+    private void habilitarNew(){
         txtPatientAddress.setEnabled(true);
         txtPatientEmail.setEnabled(true);
         txtPatientFirstName.setEnabled(true);
@@ -392,12 +484,30 @@ public class MainGUI extends javax.swing.JFrame {
         btnSave.setEnabled(true);
         tbPatientInfo.setEnabled(true);
         
+        Connect mysql = new Connect();
+        Connection cn = mysql.connect();
+        String aSQL = "";
+        aSQL = "SELECT * FROM cliente";
+        
+        patientCount = 0;
+        
+        try {
+            Statement st = (Statement) cn.createStatement();
+            ResultSet rs = st.executeQuery(aSQL);
+           
+            while(rs.next()){    
+               patientCount++;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        txtPatientNo.setText(Integer.toString(patientCount));
         txtPatientAddress.setText("");
         txtPatientEmail.setText("");
         txtPatientFirstName.setText("");
         txtPatientLastName.setText("");
         txtPatientTelephone.setText("");
-        txtPatientNo.setText("");
         txtSearchName.setText("");
         txtSearchNo.setText("");
         tbPanel.transferFocus();
@@ -415,98 +525,19 @@ public class MainGUI extends javax.swing.JFrame {
         btnSave.setEnabled(false);
         tbPatientInfo.setEnabled(false);
         
+        cmbPatientGender.setSelectedItem("M");
         txtPatientAddress.setText("");
         txtPatientEmail.setText("");
         txtPatientFirstName.setText("");
         txtPatientLastName.setText("");
         txtPatientTelephone.setText("");
         txtPatientNo.setText("");
-        txtSearchName.setText("");
-        txtSearchNo.setText("");   
+     
     }
     
     
     
     String action = "Insertar";
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        
-        Connect mysql = new Connect();
-        Connection cn = mysql.connect();
-        String pNum, fName, lName, gen, address, email, tel;
-        String aSQL = "";
-        String message = "";
-        
-        pNum = txtPatientNo.getText();
-        fName = txtPatientFirstName.getText();
-        lName = txtPatientLastName.getText();
-        gen = cmbPatientGender.getSelectedItem().toString();
-        address = txtPatientAddress.getText();
-        email = txtPatientEmail.getText();
-        tel = txtPatientTelephone.getText();
-        
-        aSQL = "INSERT INTO cliente(patient_number, firstname, lastName, gender, address, email, telephone)" +
-                "VALUES(?,?,?,?,?,?,?)";
-        
-        message = "Patient Information Saved";
-        
-        try {
-            PreparedStatement pst = cn.prepareStatement(aSQL);
-            pst.setString(1, pNum);
-            pst.setString(2, fName);
-            pst.setString(3, lName);
-            pst.setString(4, gen);
-            pst.setString(5, address);
-            pst.setString(6, email);
-            pst.setString(7, tel);
-            
-            int n = pst.executeUpdate();
-            
-            if(n > 0){
-                JOptionPane.showMessageDialog(null, message);
-                
-            }        
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-
-
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void txtPatientNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNoActionPerformed
-        txtPatientNo.transferFocus();       
-    }//GEN-LAST:event_txtPatientNoActionPerformed
-
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        habilitar();
-    }//GEN-LAST:event_btnNewActionPerformed
-
-    private void txtPatientLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientLastNameActionPerformed
-        txtPatientLastName.transferFocus();
-    }//GEN-LAST:event_txtPatientLastNameActionPerformed
-
-    private void cmbPatientGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientGenderActionPerformed
-        cmbPatientGender.transferFocus();
-    }//GEN-LAST:event_cmbPatientGenderActionPerformed
-
-    private void txtPatientAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientAddressActionPerformed
-        txtPatientAddress.transferFocus();
-    }//GEN-LAST:event_txtPatientAddressActionPerformed
-
-    private void txtPatientEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientEmailActionPerformed
-          txtPatientEmail.transferFocus();
-    }//GEN-LAST:event_txtPatientEmailActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        txtPatientAddress.setText("");
-        txtPatientEmail.setText("");
-        txtPatientFirstName.setText("");
-        txtPatientLastName.setText("");
-        txtPatientTelephone.setText("");
-        txtPatientNo.setText("");
-        txtSearchName.setText("");
-        txtSearchNo.setText(""); 
-    }//GEN-LAST:event_btnClearActionPerformed
-
     public void setUserLabel(String user){
         lblUser.setText(user);
     }
@@ -562,13 +593,10 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblUser;
     private javax.swing.JTabbedPane tbPanel;
     private javax.swing.JPanel tbPatientInfo;
-    private javax.swing.JTable tnlSearch;
     private javax.swing.JTextField txtPatientAddress;
     private javax.swing.JTextField txtPatientEmail;
     private javax.swing.JTextField txtPatientFirstName;
