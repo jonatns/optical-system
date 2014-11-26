@@ -23,7 +23,6 @@ import javax.swing.JOptionPane;
  * @author jonat_ns
  */
 public class EmployeeFrame extends javax.swing.JFrame {
-    int patientCount = 0;
     /**
      * Creates new form GUI
      */
@@ -32,7 +31,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         inHabilitarSave();
         inHabilitarSearch();
         currentDate_Time();
-        setEditable();
+        setNotEditable();
     }
    
     @SuppressWarnings("unchecked")
@@ -69,6 +68,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         cmbHealthPlan = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         search_editPanel = new javax.swing.JPanel();
         lblSearchTelephone = new javax.swing.JLabel();
         txtSearchTelephone = new javax.swing.JTextField();
@@ -93,15 +94,20 @@ public class EmployeeFrame extends javax.swing.JFrame {
         emailSearch = new javax.swing.JTextField();
         telephoneSearch = new javax.swing.JTextField();
         dobSearch = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         lblHealthCardNum = new javax.swing.JLabel();
         lblHealthPlan = new javax.swing.JLabel();
         healthCardSearch = new javax.swing.JTextField();
         txtPatientNoSearch = new javax.swing.JTextField();
-        healthPlanSearch = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        btnSearchClear = new javax.swing.JButton();
+        btnSearchSave = new javax.swing.JButton();
+        cmbHealthPlanSearch = new javax.swing.JComboBox();
         lblStatus = new javax.swing.JLabel();
         lblUpdateStatus = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         jLabel11.setText("Health Card#");
 
@@ -183,9 +189,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("DOB MM/DD/YYYY");
+        jLabel12.setText("DOB MM/DD/YYYY:");
 
-        txtDOB.setText("//");
         txtDOB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDOBActionPerformed(evt);
@@ -196,61 +201,72 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
         cmbHealthPlan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select one:", "Reforma(Triple-S)", "Humana", "MCS", "MMM" }));
 
-        jLabel14.setText("Health Card#");
+        jLabel14.setText("Health Card#:");
+
+        jLabel8.setText("Create Patient:");
 
         javax.swing.GroupLayout tbPatientInfoLayout = new javax.swing.GroupLayout(tbPatientInfo);
         tbPatientInfo.setLayout(tbPatientInfoLayout);
         tbPatientInfoLayout.setHorizontalGroup(
             tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                        .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPatientAddress)
-                            .addComponent(txtPatientLastName)
-                            .addComponent(lblPatientNo)
-                            .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                                .addComponent(cmbPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tbPatientInfoLayout.createSequentialGroup()
+                                .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-                            .addComponent(txtPatientFirstName)
-                            .addComponent(txtPatientTelephone)
-                            .addComponent(txtPatientEmail))
+                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tbPatientInfoLayout.createSequentialGroup()
+                                .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(tbPatientInfoLayout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(lblPatientNo))
+                                    .addGroup(tbPatientInfoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtPatientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPatientTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPatientAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbPatientInfoLayout.createSequentialGroup()
+                                                .addComponent(cmbPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtPatientLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPatientFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(18, 18, 18)
                         .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtHealthCardNum))
-                            .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbHealthPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbHealthPlan, 0, 250, Short.MAX_VALUE)
+                            .addComponent(txtHealthCardNum))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tbPatientInfoLayout.setVerticalGroup(
             tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tbPatientInfoLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblPatientNo))
@@ -285,11 +301,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtPatientTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNew)
                     .addComponent(btnSave)
-                    .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnNew)
-                        .addComponent(btnClear)))
+                    .addComponent(btnClear))
                 .addGap(71, 71, 71))
         );
 
@@ -303,7 +318,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
 
-        lblSearchLastName.setText("Name");
+        lblSearchLastName.setText("Name:");
 
         btnSearch.setText("Search...");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -333,22 +348,70 @@ public class EmployeeFrame extends javax.swing.JFrame {
         lblSearchBy.setText("Search Patient by:");
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
+        firstNameSearch.setBorder(null);
+
+        lastNameSearch.setBorder(null);
+
+        genderSearch.setBorder(null);
+
+        addressSearch.setBorder(null);
+
+        emailSearch.setBorder(null);
+
+        telephoneSearch.setBorder(null);
         telephoneSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 telephoneSearchActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Delete");
+        dobSearch.setBorder(null);
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         lblHealthCardNum.setText("Health Card#");
 
         lblHealthPlan.setText("Health Plan:");
 
+        healthCardSearch.setBorder(null);
+
+        txtPatientNoSearch.setBorder(null);
         txtPatientNoSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPatientNoSearchActionPerformed(evt);
+            }
+        });
+
+        btnSearchClear.setText("Clear");
+        btnSearchClear.setToolTipText("");
+        btnSearchClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchClearActionPerformed(evt);
+            }
+        });
+
+        btnSearchSave.setText("Save");
+        btnSearchSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchSaveActionPerformed(evt);
+            }
+        });
+
+        cmbHealthPlanSearch.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select one:", "Reforma(Triple-S)", "Humana", "MCS", "MMM" }));
+        cmbHealthPlanSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbHealthPlanSearchActionPerformed(evt);
             }
         });
 
@@ -359,85 +422,103 @@ public class EmployeeFrame extends javax.swing.JFrame {
             .addGroup(search_editPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(search_editPanelLayout.createSequentialGroup()
-                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(search_editPanelLayout.createSequentialGroup()
-                        .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lastNameSearch)
-                            .addComponent(addressSearch)
-                            .addComponent(emailSearch)
-                            .addComponent(telephoneSearch)
-                            .addGroup(search_editPanelLayout.createSequentialGroup()
-                                .addComponent(genderSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDOB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dobSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))))
-                    .addComponent(lblSearchBy)
+                    .addComponent(jSeparator2)
                     .addGroup(search_editPanelLayout.createSequentialGroup()
                         .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSearchTelephone)
-                            .addComponent(lblPatientNo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFirstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(search_editPanelLayout.createSequentialGroup()
+                                .addComponent(lblSearchTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtSearchTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblOr, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblOr)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblSearchLastName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSearch))
-                            .addGroup(search_editPanelLayout.createSequentialGroup()
-                                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(firstNameSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(txtPatientNoSearch))
-                                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(search_editPanelLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblHealthPlan))
-                                    .addGroup(search_editPanelLayout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(lblHealthCardNum)))
-                                .addGap(18, 18, 18)
-                                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(healthCardSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(healthPlanSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(396, 396, 396))
+                            .addComponent(lblSearchBy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(dobSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, search_editPanelLayout.createSequentialGroup()
+                                    .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(addressSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, search_editPanelLayout.createSequentialGroup()
+                                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, search_editPanelLayout.createSequentialGroup()
+                                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnSearchClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, search_editPanelLayout.createSequentialGroup()
+                                            .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(lblEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(emailSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(telephoneSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSearchSave, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, search_editPanelLayout.createSequentialGroup()
+                                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(search_editPanelLayout.createSequentialGroup()
+                                            .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(lblPatientNo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(lblFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(search_editPanelLayout.createSequentialGroup()
+                                                    .addComponent(genderSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(lblDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(search_editPanelLayout.createSequentialGroup()
+                                                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(txtPatientNoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(firstNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(lblHealthPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(lblHealthCardNum, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)))))
+                                        .addGroup(search_editPanelLayout.createSequentialGroup()
+                                            .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lastNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(healthCardSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbHealthPlanSearch, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(378, 378, Short.MAX_VALUE))
+                    .addComponent(jSeparator1)))
         );
         search_editPanelLayout.setVerticalGroup(
             search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(search_editPanelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addGap(20, 20, 20)
                 .addComponent(lblSearchBy)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSearchTelephone)
                     .addComponent(txtSearchTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOr)
-                    .addComponent(lblSearchLastName)
+                    .addComponent(lblOr, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch)
                     .addComponent(txtSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
+                    .addComponent(lblSearchLastName))
                 .addGap(18, 18, 18)
-                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblPatientNo2)
-                        .addComponent(txtPatientNoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblHealthPlan)
-                        .addComponent(healthPlanSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPatientNo2)
+                    .addComponent(txtPatientNoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHealthPlan)
+                    .addComponent(cmbHealthPlanSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -451,17 +532,17 @@ public class EmployeeFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGender)
-                    .addComponent(genderSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDOB)
-                    .addComponent(dobSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(dobSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genderSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddress)
                     .addComponent(addressSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmail))
+                    .addComponent(lblEmail)
+                    .addComponent(emailSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telephoneSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -469,8 +550,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit)
-                    .addComponent(jButton1))
-                .addGap(21, 21, 21))
+                    .addComponent(btnDelete)
+                    .addComponent(btnSearchClear)
+                    .addComponent(btnSearchSave))
+                .addGap(126, 126, 126))
         );
 
         employeeTabs.addTab("Search/Edit Patient", search_editPanel);
@@ -479,6 +562,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
         lblUpdateStatus.setText("Welcome");
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Eyesys logo blue small.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -486,13 +571,17 @@ public class EmployeeFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 505, Short.MAX_VALUE))
+                    .addComponent(employeeTabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUpdateStatus)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(employeeTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 849, Short.MAX_VALUE)
+                        .addComponent(lblUpdateStatus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -500,11 +589,13 @@ public class EmployeeFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(employeeTabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus)
-                    .addComponent(lblUpdateStatus))
+                .addComponent(employeeTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblStatus)
+                        .addComponent(lblUpdateStatus)))
                 .addContainerGap())
         );
 
@@ -535,8 +626,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
                       next(rs);
 
                 }
-                if(lblFirstName.getText().equals("")){
-                    JOptionPane.showMessageDialog(null, "Patient name not found");
+                if(firstNameSearch.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Name not found");
                     inHabilitarSearch();
                     txtSearchTelephone.setText("");
                     txtSearchName.setText("");
@@ -561,10 +652,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
                     
                 next(rs);
                 }
-            if(lblFirstName.getText().equals("")){
-                    JOptionPane.showMessageDialog(null, "Patient number not found");
-                    inHabilitarSave();
-                    lblTelephone.setText("");
+            if(firstNameSearch.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Telephone not found");
+                    inHabilitarSearch();
+                    txtSearchTelephone.setText("");
                     txtSearchName.setText("");
                     }
                 else{
@@ -595,7 +686,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
             addressSearch.setText(rs.getString("address"));
             emailSearch.setText(rs.getString("email"));
             telephoneSearch.setText(rs.getString("telephone"));
-            healthPlanSearch.setText(rs.getString("health_plan"));
+            cmbHealthPlanSearch.setSelectedItem(rs.getString("health_plan"));
             healthCardSearch.setText(rs.getString("health_cardNum"));
 
          } catch (SQLException ex) {
@@ -699,6 +790,73 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private void txtPatientNoSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNoSearchActionPerformed
  
     }//GEN-LAST:event_txtPatientNoSearchActionPerformed
+
+    private void btnSearchClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchClearActionPerformed
+        inHabilitarSearch();
+    }//GEN-LAST:event_btnSearchClearActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        setEditable();     
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+         int response = JOptionPane.showConfirmDialog(null, "Do you want to delete this patient?", "Confirm",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+         if (response == JOptionPane.NO_OPTION) {
+             System.out.println("No button clicked");
+        }
+         else if (response == JOptionPane.YES_OPTION) {
+            delete();
+            lblUpdateStatus.setText("Patient deleted");
+            inHabilitarSearch();
+        }    
+         else if (response == JOptionPane.CLOSED_OPTION) {
+             System.out.println("JOptionPane closed");
+         }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSearchSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchSaveActionPerformed
+        Connect mysql = new Connect();
+        Connection cn = mysql.connect();
+        String fName, lName, gen, address, email, tel, hPlan, hCardNum;
+        String aSQL = "";
+        String message = "";
+       
+        fName = firstNameSearch.getText();
+        lName = lastNameSearch.getText();
+        gen = genderSearch.getText();
+        address = addressSearch.getText();
+        email = emailSearch.getText();
+        tel = telephoneSearch.getText();
+        hPlan = cmbHealthPlanSearch.getSelectedItem().toString();
+        hCardNum = healthCardSearch.getText();
+        
+        
+        String SQL = "UPDATE cliente SET firstname='" + fName + "', lastName='"+ lName+"', "
+                + "gender='"+ gen+"', address='"+address+"', email='"+ email+"', "
+                + "telephone='"+ tel+"', health_plan='"+ hPlan+"', health_cardNum='"+ hCardNum+"' WHERE patient_number='" 
+                + txtPatientNoSearch.getText() + "'";
+
+        message = "Patient Information Edited";
+
+        try {
+            Statement st;
+            st = (Statement) cn.createStatement();
+
+            st.execute(SQL);
+
+                lblUpdateStatus.setText(message);
+                
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+          inHabilitarSearch();
+    }//GEN-LAST:event_btnSearchSaveActionPerformed
+
+    private void cmbHealthPlanSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbHealthPlanSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbHealthPlanSearchActionPerformed
    
     public void currentDate_Time(){
         
@@ -725,22 +883,22 @@ public class EmployeeFrame extends javax.swing.JFrame {
         Connect mysql = new Connect();
         Connection cn = mysql.connect();
         String aSQL = "";
-        aSQL = "SELECT * FROM cliente";
-        
-        patientCount = 0;
+        aSQL = "SELECT patient_number FROM cliente";
+        int patientCount = 0;
         
         try {
             Statement st = (Statement) cn.createStatement();
             ResultSet rs = st.executeQuery(aSQL);
            
-            while(rs.next()){    
-               patientCount++;
+            while(rs.next()){  
+            patientCount = rs.getInt("patient_number");
             }
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
         
-        lblPatientNo.setText(Integer.toString(patientCount));
+        lblPatientNo.setText(Integer.toString(patientCount + 1));
         txtPatientAddress.setText("");
         txtPatientEmail.setText("");
         txtPatientFirstName.setText("");
@@ -780,7 +938,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
      
     }
     
-    public void setEditable()
+    public void setNotEditable()
     {
         txtPatientNoSearch.setEditable(false);
         dobSearch.setEditable(false);
@@ -790,8 +948,34 @@ public class EmployeeFrame extends javax.swing.JFrame {
         lastNameSearch.setEditable(false);
         telephoneSearch.setEditable(false);
         genderSearch.setEditable(false);
-        healthPlanSearch.setEditable(false);
+        cmbHealthPlanSearch.setEditable(false);
         healthCardSearch.setEditable(false);
+        btnSearchSave.setVisible(false);
+    }    
+    public void setEditable()
+    {
+
+        dobSearch.setEditable(true);
+        addressSearch.setEditable(true);
+        emailSearch.setEditable(true);
+        firstNameSearch.setEditable(true);
+        lastNameSearch.setEditable(true);
+        telephoneSearch.setEditable(true);
+        cmbHealthPlanSearch.setEditable(true);
+        healthCardSearch.setEditable(true);
+        btnSearchSave.setVisible(true);
+        
+        dobSearch.setBorder((txtSearchName.getBorder()));
+        addressSearch.setBorder((txtSearchName.getBorder()));
+        emailSearch.setBorder((txtSearchName.getBorder()));
+        firstNameSearch.setBorder((txtSearchName.getBorder()));
+        lastNameSearch.setBorder((txtSearchName.getBorder()));
+        telephoneSearch.setBorder((txtSearchName.getBorder()));
+        genderSearch.setBorder((txtSearchName.getBorder()));
+        healthCardSearch.setBorder((txtSearchName.getBorder()));
+        
+        
+        lblUpdateStatus.setText("Editing Patient #" + txtPatientNoSearch.getText());
     }    
     
     private void habilitarSearch(){
@@ -805,9 +989,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
         lastNameSearch.setEnabled(true);
         telephoneSearch.setEnabled(true);
         genderSearch.setEnabled(true);
-        healthPlanSearch.setEnabled(true);
+        cmbHealthPlanSearch.setEnabled(true);
         healthCardSearch.setEnabled(true);
         btnEdit.setEnabled(true);
+        btnDelete.setEnabled(true);
+        btnSearchClear.setEnabled(true);
+        
         
 
     }
@@ -818,13 +1005,16 @@ public class EmployeeFrame extends javax.swing.JFrame {
         dobSearch.setEnabled(false);
         addressSearch.setEnabled(false);
         emailSearch.setEnabled(false);
-        firstNameSearch.setEnabled(false);;
+        firstNameSearch.setEnabled(false);
         lastNameSearch.setEnabled(false);
         telephoneSearch.setEnabled(false);
         genderSearch.setEnabled(false);
-        healthPlanSearch.setEnabled(false);
+        cmbHealthPlanSearch.setEnabled(false);
         healthCardSearch.setEnabled(false);
         btnEdit.setEnabled(false);
+        btnSearchClear.setEnabled(false);
+        btnDelete.setEnabled(false);
+        btnSearchSave.setVisible(false);
         
         txtPatientNoSearch.setText("");
         dobSearch.setText("");
@@ -832,9 +1022,42 @@ public class EmployeeFrame extends javax.swing.JFrame {
         emailSearch.setText("");
         firstNameSearch.setText("");
         lastNameSearch.setText("");
+        cmbHealthPlanSearch.setSelectedIndex(0);
+        healthCardSearch.setText("");
         telephoneSearch.setText("");
         genderSearch.setText("");
+        txtSearchTelephone.setText("");
+        txtSearchName.setText("");
+        
+        dobSearch.setBorder(null);
+        addressSearch.setBorder(null);
+        emailSearch.setBorder(null);
+        firstNameSearch.setBorder(null);
+        lastNameSearch.setBorder(null);
+        telephoneSearch.setBorder(null);
+        genderSearch.setBorder(null);
+        healthCardSearch.setBorder(null);
+    
+        setNotEditable();
               
+    }
+    
+    private void delete(){
+        
+        Connect mysql = new Connect();
+        Connection cn = mysql.connect();
+        
+        String sql = "DELETE FROM cliente WHERE patient_number = '"+txtPatientNoSearch.getText()+"'";
+        
+         
+        try {
+            Statement st;
+            st = (Statement) cn.createStatement();
+            st.execute(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
     }
     
     
@@ -881,12 +1104,16 @@ public class EmployeeFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressSearch;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSearchClear;
+    private javax.swing.JButton btnSearchSave;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cmbHealthPlan;
+    private javax.swing.JComboBox cmbHealthPlanSearch;
     private javax.swing.JComboBox cmbPatientGender;
     private javax.swing.JTextField dobSearch;
     private javax.swing.JTextField emailSearch;
@@ -894,8 +1121,6 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JTextField firstNameSearch;
     private javax.swing.JTextField genderSearch;
     private javax.swing.JTextField healthCardSearch;
-    private javax.swing.JTextField healthPlanSearch;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -909,6 +1134,11 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField lastNameSearch;
     private javax.swing.JLabel lblAddress;
