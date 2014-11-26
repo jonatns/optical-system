@@ -32,6 +32,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         inHabilitarSave();
         inHabilitarSearch();
         currentDate_Time();
+        setEditable();
     }
    
     @SuppressWarnings("unchecked")
@@ -64,9 +65,9 @@ public class EmployeeFrame extends javax.swing.JFrame {
         lblPatientNo = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtDOB = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtHealthCardNum = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        cmbHealthPlan = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
         search_editPanel = new javax.swing.JPanel();
         lblSearchTelephone = new javax.swing.JLabel();
@@ -91,14 +92,13 @@ public class EmployeeFrame extends javax.swing.JFrame {
         addressSearch = new javax.swing.JTextField();
         emailSearch = new javax.swing.JTextField();
         telephoneSearch = new javax.swing.JTextField();
-        PatientNoSearch = new javax.swing.JLabel();
         dobSearch = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        lblHealthCardNum = new javax.swing.JLabel();
+        lblHealthPlan = new javax.swing.JLabel();
+        healthCardSearch = new javax.swing.JTextField();
+        txtPatientNoSearch = new javax.swing.JTextField();
+        healthPlanSearch = new javax.swing.JTextField();
         lblStatus = new javax.swing.JLabel();
         lblUpdateStatus = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
@@ -194,7 +194,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
         jLabel13.setText("Health Plan:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select one:", "Reforma(Triple-S)", "Humana", "MCS", "MMM" }));
+        cmbHealthPlan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select one:", "Reforma(Triple-S)", "Humana", "MCS", "MMM" }));
 
         jLabel14.setText("Health Card#");
 
@@ -240,11 +240,11 @@ public class EmployeeFrame extends javax.swing.JFrame {
                             .addGroup(tbPatientInfoLayout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField4))
+                                .addComponent(txtHealthCardNum))
                             .addGroup(tbPatientInfoLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cmbHealthPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tbPatientInfoLayout.setVerticalGroup(
@@ -259,13 +259,13 @@ public class EmployeeFrame extends javax.swing.JFrame {
                     .addComponent(txtPatientFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel13)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbHealthPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPatientLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHealthCardNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tbPatientInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -342,15 +342,13 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
         jButton1.setText("Delete");
 
-        jLabel8.setText("Health Card#");
+        lblHealthCardNum.setText("Health Card#");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select one:", "Reforma(Triple-S)", "Humana", "MCS", "MMM" }));
+        lblHealthPlan.setText("Health Plan:");
 
-        jLabel9.setText("Health Plan:");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtPatientNoSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtPatientNoSearchActionPerformed(evt);
             }
         });
 
@@ -405,21 +403,19 @@ public class EmployeeFrame extends javax.swing.JFrame {
                             .addGroup(search_editPanelLayout.createSequentialGroup()
                                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(firstNameSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(jTextField2))
+                                    .addComponent(txtPatientNoSearch))
                                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(search_editPanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel9))
+                                        .addComponent(lblHealthPlan))
                                     .addGroup(search_editPanelLayout.createSequentialGroup()
                                         .addGap(19, 19, 19)
-                                        .addComponent(jLabel8)))
+                                        .addComponent(lblHealthCardNum)))
                                 .addGap(18, 18, 18)
-                                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, 250, Short.MAX_VALUE)
-                                    .addComponent(jTextField1))
-                                .addGap(24, 24, 24)
-                                .addComponent(PatientNoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(276, 276, 276))
+                                .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(healthCardSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(healthPlanSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(396, 396, 396))
         );
         search_editPanelLayout.setVerticalGroup(
             search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,18 +434,16 @@ public class EmployeeFrame extends javax.swing.JFrame {
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblPatientNo2)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(PatientNoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPatientNoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHealthPlan)
+                        .addComponent(healthPlanSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(firstNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblHealthCardNum)
+                    .addComponent(healthCardSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(search_editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLastName)
@@ -593,7 +587,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
     
     public void next(ResultSet rs){
         try {
-            PatientNoSearch.setText(rs.getString("patient_number"));
+            txtPatientNoSearch.setText(rs.getString("patient_number"));
        
             firstNameSearch.setText(rs.getString("firstname"));
             lastNameSearch.setText(rs.getString("lastname"));
@@ -601,6 +595,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
             addressSearch.setText(rs.getString("address"));
             emailSearch.setText(rs.getString("email"));
             telephoneSearch.setText(rs.getString("telephone"));
+            healthPlanSearch.setText(rs.getString("health_plan"));
+            healthCardSearch.setText(rs.getString("health_cardNum"));
 
          } catch (SQLException ex) {
             Logger.getLogger(EmployeeFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -625,7 +621,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
         Connect mysql = new Connect();
         Connection cn = mysql.connect();
-        String pNum, fName, lName, gen, address, email, tel;
+        String pNum, fName, lName, gen, address, email, tel, hPlan, hCardNum;
         String aSQL = "";
         String message = "";
        
@@ -636,11 +632,13 @@ public class EmployeeFrame extends javax.swing.JFrame {
         address = txtPatientAddress.getText();
         email = txtPatientEmail.getText();
         tel = txtPatientTelephone.getText();
+        hPlan = cmbHealthPlan.getSelectedItem().toString();
+        hCardNum = txtHealthCardNum.getText();
         
-
-
-        aSQL = "INSERT INTO cliente(patient_number, firstname, lastName, gender, address, email, telephone)" +
-        "VALUES(?,?,?,?,?,?,?)";
+        
+        aSQL = "INSERT INTO cliente(patient_number, firstname, lastName, gender, "
+                + "address, email, telephone, health_plan, health_cardNum)" +
+        "VALUES(?,?,?,?,?,?,?,?,?)";
 
         message = "Patient Information Saved";
 
@@ -653,6 +651,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
             pst.setString(5, address);
             pst.setString(6, email);
             pst.setString(7, tel);
+            pst.setString(8, hPlan);
+            pst.setString(9, hCardNum);
 
             int n = pst.executeUpdate();
 
@@ -696,17 +696,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_telephoneSearchActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void txtPatientNoSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNoSearchActionPerformed
+ 
+    }//GEN-LAST:event_txtPatientNoSearchActionPerformed
    
-     
-    private void habilitarSearch(){
-    
-        btnEdit.setVisible(true);
-
-    }
-    
     public void currentDate_Time(){
         
        // Instantiate a Date object
@@ -724,6 +717,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
         txtPatientTelephone.setEnabled(true);
         lblPatientNo.setEnabled(true);
         cmbPatientGender.setEnabled(true);
+        cmbHealthPlan.setEnabled(true);
+        txtHealthCardNum.setEnabled(true);
         btnSave.setEnabled(true);
         tbPatientInfo.setEnabled(true);
         
@@ -753,6 +748,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
         txtPatientTelephone.setText("");
         txtSearchName.setText("");
         txtSearchTelephone.setText("");
+        cmbHealthPlan.setSelectedIndex(0);
+        txtHealthCardNum.setText("");
         employeeTabs.transferFocus();
    
     }
@@ -766,6 +763,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
         txtPatientTelephone.setEnabled(false);
         lblPatientNo.setEnabled(false);
         cmbPatientGender.setEnabled(false);
+        cmbHealthPlan.setEnabled(false);
+        txtHealthCardNum.setEnabled(false);
         btnSave.setEnabled(false);
         tbPatientInfo.setEnabled(false);
         
@@ -776,20 +775,66 @@ public class EmployeeFrame extends javax.swing.JFrame {
         txtPatientLastName.setText("");
         txtPatientTelephone.setText("");
         lblPatientNo.setText("");
+        cmbHealthPlan.setSelectedIndex(0);
+        txtHealthCardNum.setText("");
      
     }
     
+    public void setEditable()
+    {
+        txtPatientNoSearch.setEditable(false);
+        dobSearch.setEditable(false);
+        addressSearch.setEditable(false);
+        emailSearch.setEditable(false);
+        firstNameSearch.setEditable(false);
+        lastNameSearch.setEditable(false);
+        telephoneSearch.setEditable(false);
+        genderSearch.setEditable(false);
+        healthPlanSearch.setEditable(false);
+        healthCardSearch.setEditable(false);
+    }    
+    
+    private void habilitarSearch(){
+    
+        
+        txtPatientNoSearch.setEnabled(true);
+        dobSearch.setEnabled(true);
+        addressSearch.setEnabled(true);
+        emailSearch.setEnabled(true);
+        firstNameSearch.setEnabled(true);
+        lastNameSearch.setEnabled(true);
+        telephoneSearch.setEnabled(true);
+        genderSearch.setEnabled(true);
+        healthPlanSearch.setEnabled(true);
+        healthCardSearch.setEnabled(true);
+        btnEdit.setEnabled(true);
+        
+
+    }
+    
     private void inHabilitarSearch(){
-        PatientNoSearch.setText("");
+         
+        txtPatientNoSearch.setEnabled(false);
+        dobSearch.setEnabled(false);
+        addressSearch.setEnabled(false);
+        emailSearch.setEnabled(false);
+        firstNameSearch.setEnabled(false);;
+        lastNameSearch.setEnabled(false);
+        telephoneSearch.setEnabled(false);
+        genderSearch.setEnabled(false);
+        healthPlanSearch.setEnabled(false);
+        healthCardSearch.setEnabled(false);
+        btnEdit.setEnabled(false);
+        
+        txtPatientNoSearch.setText("");
         dobSearch.setText("");
         addressSearch.setText("");
         emailSearch.setText("");
-        lastNameSearch.setText("");
+        firstNameSearch.setText("");
         lastNameSearch.setText("");
         telephoneSearch.setText("");
         genderSearch.setText("");
-        btnEdit.setVisible(false);
-             
+              
     }
     
     
@@ -834,7 +879,6 @@ public class EmployeeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel PatientNoSearch;
     private javax.swing.JTextField addressSearch;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
@@ -842,16 +886,17 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox cmbHealthPlan;
     private javax.swing.JComboBox cmbPatientGender;
     private javax.swing.JTextField dobSearch;
     private javax.swing.JTextField emailSearch;
     private javax.swing.JTabbedPane employeeTabs;
     private javax.swing.JTextField firstNameSearch;
     private javax.swing.JTextField genderSearch;
+    private javax.swing.JTextField healthCardSearch;
+    private javax.swing.JTextField healthPlanSearch;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -864,18 +909,15 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField lastNameSearch;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblHealthCardNum;
+    private javax.swing.JLabel lblHealthPlan;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblOr;
     private javax.swing.JLabel lblPatientNo;
@@ -891,10 +933,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JTextField telephoneSearch;
     private javax.swing.JLabel time;
     private javax.swing.JTextField txtDOB;
+    private javax.swing.JTextField txtHealthCardNum;
     private javax.swing.JTextField txtPatientAddress;
     private javax.swing.JTextField txtPatientEmail;
     private javax.swing.JTextField txtPatientFirstName;
     private javax.swing.JTextField txtPatientLastName;
+    private javax.swing.JTextField txtPatientNoSearch;
     private javax.swing.JTextField txtPatientTelephone;
     private javax.swing.JTextField txtSearchName;
     private javax.swing.JTextField txtSearchTelephone;
